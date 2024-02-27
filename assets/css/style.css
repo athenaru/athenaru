@@ -582,6 +582,7 @@ p {
   font-family: "Playfair Display", serif;
   font-size: 28px;
   text-align: left;
+  color: #0b0b0b
 }
 
 #about .about-descr .separator {
@@ -1507,7 +1508,7 @@ blockquote {
   }
 
   #about .about-descr .p-heading {
-    font-size: 20px;
+    font-size: 32px;
   }
 
   #about .about-descr .separator {
