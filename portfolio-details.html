@@ -123,17 +123,17 @@
 
           <div class="col-lg-4">
             <div class="portfolio-info">
-              <h3>Project Title Here</h3>
+              <h3 id="projectTitle">Project Title Here</h3>
               <ul>
-                <li><strong>Category</strong>: Web design</li>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Software</strong>: R</li>
+                <li><strong>Category</strong>: <span id="category"></span> </li>
+                <li><strong>Client</strong>: <span id="client"></span> </li>
+                <li><strong>Project date</strong>: <span id="projectDate"></span> </li>
+                <li><strong>Software</strong>: <span id="software"></span> </li>
               </ul>
             </div>
             <div class="portfolio-description">
               <h2>Description</h2>
-              <p>
+              <p id="description">
                 Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
               </p>
             </div>
@@ -142,6 +142,82 @@
         </div>
 
       </div>
+
+      <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+            // Assuming you have an array or object containing project details
+            const projectDetails = {
+                1: {
+                      title: 'Senior Thesis: News Sentiment Analysis and Corporate Bond Yields',
+                      category: 'Research, Data Science',
+                      client: '-',
+                      projectDate: 'Jan 2024 - Present',
+                      software: 'R, ChatGPT',
+                      description: 'abstract here'
+                },
+
+                2: {
+                      title: 'STA 470S: Intro to Statistical Consulting',
+                      category: 'Consulting, Research, Data Science',
+                      client: 'SCC Clients (often desparate PhD students)',
+                      projectDate: 'Jan 2024 - May 2024',
+                      software: 'R',
+                      description: 'The Statistical Consulting Center (SCC) offers statistical consulting to Duke University faculty, students and staff on research involving statistical methods.'
+                },
+
+                3: {
+                      title: 'Social Network Analysis',
+                      category: 'Research, Data Science',
+                      client: 'Professor Chris Bail',
+                      projectDate: 'April 2024',
+                      software: 'R',
+                      description: 'abstract here'
+                },
+
+                4: {
+                      title: 'Chart Toppers: Billboard Hot 100 Songs on Spotify',
+                      category: 'Research, Data Science',
+                      client: 'Professor Simon Mak',
+                      projectDate: 'Dec 2023',
+                      software: 'R',
+                      description: 'abstract here'
+                },
+
+                5: {
+                    title: 'VMS 206: Digital Imaging',
+                    category: 'Graphic Design',
+                    client: 'Professor Raquel Salvatella de Prada',
+                    projectDate: 'Aug 2022 - Dec 2022',
+                    software: 'Adobe Photoshop, Adobe Illustrator',
+                    description: 'Select works from class.'
+                },
+
+                6: {
+                      title: 'My Graphic Art',
+                      category: 'Graphic Design',
+                      client: '-',
+                      projectDate: 'My Free Time',
+                      software: 'Adobe Photoshop, Adobe Illustrator, Procreate',
+                      description: 'Select works.'
+                }
+                
+            };
+    
+            // Load project details based on project ID
+            if (projectId && projectDetails[projectId]) {
+                const project = projectDetails[projectId];
+                document.getElementById('projectTitle').innerText = project.title;
+                document.getElementById('category').innerText = project.category;
+                document.getElementById('client').innerText = project.client;
+                document.getElementById('projectDate').innerText = project.projectDate;
+                document.getElementById('software').innerText = project.software;
+                document.getElementById('description').innerText = project.description;
+            }
+        });
+    </script>
+
     </section><!-- End Portfolio Details Section -->
 
   </main><!-- End #main -->
