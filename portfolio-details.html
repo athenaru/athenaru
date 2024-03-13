@@ -102,20 +102,8 @@
 
           <div class="col-lg-8">
             <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
-                </div>
-
+              <div class="swiper-wrapper align-items-center" id="projectFiles">
+                  <!-- Files will be dynamically added here -->
               </div>
               <div class="swiper-pagination"></div>
             </div>
@@ -147,7 +135,6 @@
         window.addEventListener('DOMContentLoaded', (event) => {
             const urlParams = new URLSearchParams(window.location.search);
             const projectId = urlParams.get('id');
-            // Assuming you have an array or object containing project details
             const projectDetails = {
                 1: {
                       title: 'Senior Thesis: News Sentiment Analysis and Corporate Bond Yields',
@@ -155,16 +142,24 @@
                       client: '-',
                       projectDate: 'Jan 2024 - Present',
                       software: 'R, ChatGPT',
-                      description: 'abstract here'
+                      description: 'Design sentiment scale ✅ \n Prompt Engineering & Test Set Labeling - in progress',
+                      files: [
+                        { type: 'image', src: 'assets/img/portfolio/coming-soon00.jpg' }
+                        // { type: 'pdf', src: '' }
+                      ]
                 },
 
                 2: {
                       title: 'STA 470S: Intro to Statistical Consulting',
                       category: 'Consulting, Research, Data Science',
-                      client: 'SCC Clients (often desparate PhD students)',
+                      client: 'SCC Clients (desperate PhD students)',
                       projectDate: 'Jan 2024 - May 2024',
                       software: 'R',
-                      description: 'The Statistical Consulting Center (SCC) offers statistical consulting to Duke University faculty, students and staff on research involving statistical methods.'
+                      description: 'The Statistical Consulting Center (SCC) offers statistical consulting to Duke University faculty, students and staff on research involving statistical methods.', 
+                      files: [
+                        { type: 'pdf', src: 'assets/img/portfolio/Reproduce Holder.pdf' },
+                        { type: 'pdf', src: 'assets/img/portfolio/ZIM_ZAM-presentation.pdf' }
+                      ]
                 },
 
                 3: {
@@ -173,16 +168,23 @@
                       client: 'Professor Chris Bail',
                       projectDate: 'April 2024',
                       software: 'R',
-                      description: 'abstract here'
+                      description: 'Obtain YouTube API credentials - in progress', 
+                      files: [
+                        { type: 'image', src: 'assets/img/portfolio/coming-soon00.jpg' }
+                      ]
                 },
 
                 4: {
-                      title: 'Chart Toppers: Billboard Hot 100 Songs on Spotify',
+                      title: 'Chart Toppers: Billboard Top 100 Songs on Spotify',
                       category: 'Research, Data Science',
                       client: 'Professor Simon Mak',
                       projectDate: 'Dec 2023',
                       software: 'R',
-                      description: 'abstract here'
+                      description: 'What makes a song successful (as determined by Billboard rankings) in the US musical landscape? We investigate three research questions: (1) what makes a song stay on the chart; (2) what factors influence how high a song peaks on the chart; and (3) what characteristics of songs have led to success in each decade from 1950 to 2020.',
+                      files: [
+                        { type: 'pdf', src: 'assets/img/portfolio/sta325-final-report.pdf' },
+                        { type: 'pdf', src: 'assets/img/portfolio/sta325-final-presentation.pdf' }
+                      ]
                 },
 
                 5: {
@@ -191,7 +193,14 @@
                     client: 'Professor Raquel Salvatella de Prada',
                     projectDate: 'Aug 2022 - Dec 2022',
                     software: 'Adobe Photoshop, Adobe Illustrator',
-                    description: 'Select works from class.'
+                    description: 'Select works. This course helps students to express themselves visually and introduces different techniques of Digital Imaging using Photoshop and Illustrator. The focus is not only on retouching and manipulating images but also on using the computer as a medium to create art and communicate ideas.', 
+                    files: [
+                      { type: 'image', src: 'assets/img/portfolio/vms-art1.jpg' }, 
+                      { type: 'image', src: 'assets/img/portfolio/vms-art2.jpg' }, 
+                      { type: 'image', src: 'assets/img/portfolio/vms-art3.jpg' }, 
+                      { type: 'image', src: 'assets/img/portfolio/vms-art4.jpg' }, 
+                      { type: 'image', src: 'assets/img/portfolio/vms-art5.jpg' } 
+                    ]
                 },
 
                 6: {
@@ -200,21 +209,53 @@
                       client: '-',
                       projectDate: 'My Free Time',
                       software: 'Adobe Photoshop, Adobe Illustrator, Procreate',
-                      description: 'Select works.'
+                      description: 'Select works.',
+                      files: [
+                        { type: 'image', src: 'assets/img/portfolio/my-art1.jpg' }, 
+                        { type: 'image', src: 'assets/img/portfolio/my-art2.jpg' },
+                        { type: 'image', src: 'assets/img/portfolio/my-art3.jpg' },
+                        { type: 'image', src: 'assets/img/portfolio/my-art4.jpg' },
+                        { type: 'image', src: 'assets/img/portfolio/my-art5.jpg' },
+                        { type: 'image', src: 'assets/img/portfolio/my-art6.jpg' },
+                        { type: 'image', src: 'assets/img/portfolio/my-art7.jpg' }
+                      ]
                 }
                 
             };
     
-            // Load project details based on project ID
-            if (projectId && projectDetails[projectId]) {
-                const project = projectDetails[projectId];
-                document.getElementById('projectTitle').innerText = project.title;
-                document.getElementById('category').innerText = project.category;
-                document.getElementById('client').innerText = project.client;
-                document.getElementById('projectDate').innerText = project.projectDate;
-                document.getElementById('software').innerText = project.software;
-                document.getElementById('description').innerText = project.description;
-            }
+          // Load project details based on project ID
+          if (projectId && projectDetails[projectId]) {
+            const project = projectDetails[projectId];
+            document.getElementById('projectTitle').innerText = project.title;
+            document.getElementById('category').innerText = project.category;
+            document.getElementById('client').innerText = project.client;
+            document.getElementById('projectDate').innerText = project.projectDate;
+            document.getElementById('software').innerText = project.software;
+            document.getElementById('description').innerText = project.description;
+
+            // Load project files
+            const projectFilesContainer = document.getElementById('projectFiles');
+            project.files.forEach(file => {
+                const slide = document.createElement('div');
+                slide.classList.add('swiper-slide');
+                
+                if (file.type === 'image') {
+                    const img = document.createElement('img');
+                    img.src = file.src;
+                    img.alt = project.title; // You can set alt text if needed
+                    slide.appendChild(img);
+                } else if (file.type === 'pdf') {
+                    const embed = document.createElement('embed');
+                    embed.src = file.src;
+                    embed.type = 'application/pdf';
+                    embed.width = '100%';
+                    embed.height = '100%';
+                    slide.appendChild(embed);
+                }
+                
+                projectFilesContainer.appendChild(slide);
+            });
+          }
         });
     </script>
 
