@@ -85,31 +85,78 @@
           <div class="col-md-8 col-md-offset-2">
             <div class="row">
               <div class="container-main single-main">
+
                 <div class="col-md-12">
                   <div class="block-main mb-30">
-                    <img src="assets/img/blog-post-big.jpg" class="img-responsive" alt="reviews2">
+                    <img id="workImage" class="img-responsive" alt="reviews2">
                     <div class="content-main single-post padDiv">
                       <div class="journal-txt">
-                        <h4><a href="#">POSITION</a></h4>
+                        <h4 id="workPosition">POSITION</h4>
                       </div>
                       <div class="post-meta">
                         <ul class="list-unstyled mb-0">
-                          <li class="author">Company:<a href="#">company name</a></li>
-                          <li class="date">Date:<a href="#">date</a></li>
+                          <li class="author">Company: <a id="companyLink" href="#" target="_blank"><span id="company"></span></a></li>
+                          <li class="date">Date: <span id="workDate"></span></li>
                         </ul>
                       </div>
-                      <p class="mb-30">text</p>
-                      <p class="mb-30">text</p>
+                      <p class="mb-30" id="workDescription">text</p>
                       <!-- <blockquote>block text</blockquote> -->
-                      <p class="mb-30">text</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>        
       </div>
+
+      <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const workId = urlParams.get('id');
+            const workDetails = {
+                1: {
+                    position: 'Digital & Technology - Data Science Intern',
+                    company: 'General Mills',
+                    companyUrl: 'https://www.generalmills.com/', 
+                    date: 'May 2024 - July 2024',
+                    description: 'Excited to join the team!',
+                    image: 'assets/img/work/GM-1.jpg'
+                },
+
+                2: {
+                    position: 'Data Science Fixed Income Intern',
+                    company: 'Neuberger Berman',
+                    companyUrl: 'https://www.nb.com/en/global/home',
+                    date: 'June 2023 - July 2023',
+                    description: '<br><ul><li><strong>Conducted time-series analysis on earnings revisions to aggregate on S&P 500 Constituents portfolio</strong><br>&nbsp;Skills: Python, Jupyter Notebook, Excel, Visible Alpha</li><li><strong>Improved fixed income quant project transition speed by creating code documentation and interpretation</strong><br>&nbsp;Skills: Python, Excel, Microsoft Word</li><li><strong>Increased efficient data utilization by organizing a comprehensive data catalogue for the DS Algos Team</strong><br>&nbsp;Skills: LLM, Excel</li><li><strong>Reduced data extraction time in Snowflake to obtain consensus views from a database</strong><br>&nbsp;Skills: SQL, Snowflake, Python</li><li><strong>Presented a stock pitch on Target in a team of 5, placing 2nd out of 8 teams in the Stock Picking Competition</strong><br>&nbsp;Skills: Excel, Visible Alpha, PowerPoint</li></ul>', 
+                    image: 'assets/img/work/NB-1.jpg'
+                },
+
+                3: {
+                    position: 'Sales & Marketing Intern',
+                    company: 'Amira Labs',
+                    companyUrl: 'https://amiralabs.com/',
+                    date: 'June 2022 - August 2022',
+                    description: '<br><ul><li><strong>Developed 3 workflows to web-scrape job listings off Y Combinator</strong><br>&nbsp;Skills: R, Python, Google Chrome Extensions</li><li><strong>Led a team of 4 interns to train a ML model in GCP’s Vertex AI to extract key words from Y Combinator listings</strong><br>&nbsp;Skills: Google Cloud Platform (GCP) Vertex AI</li><li><strong>Researched tech consulting start-ups in the Research Triangle Park to set up meetings for potential partnerships</strong><br>&nbsp;Skills: Excel, LinkedIn</li><li><strong>Presented research on sales methods and website technology usage of 7 competitors with a focus on user behavior</strong><br>&nbsp;Skills: Excel</li></ul>', 
+                    image: 'assets/img/work/AL-1.jpg'
+                }
+                
+            };
+    
+            // Load work details based on work ID
+            if (workId && workDetails[workId]) {
+                const work = workDetails[workId];
+                document.getElementById('workPosition').innerText = work.position;
+                document.getElementById('company').innerText = work.company;
+                document.getElementById('companyLink').href = work.companyUrl;
+                document.getElementById('workDate').innerText = work.date;
+                document.getElementById('workDescription').innerHTML = work.description;
+                document.getElementById('workImage').src = work.image;
+            }
+        });
+      </script>
+
     </div><!-- End Blog Single -->
 
   </main><!-- End #main -->

@@ -39,8 +39,9 @@ h2 {
 
 h4 {
   color: #292929;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
+  margin-bottom: 15px;
 }
 
 a {
@@ -141,7 +142,8 @@ p {
 }
 
 .mb-30 {
-  margin-bottom: 30px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .main-content {
@@ -993,13 +995,22 @@ p {
   transition: all 0.5s ease-in-out 0s;
 }
 
+#workImage {
+  width: 100%; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+#workDescription li{
+  margin-bottom: 10px;
+}
+
 .journal-txt h4 a:hover {
   color: #b8a07e;
   transition: all 0.5s ease-in-out 0s;
 }
 
 .post-meta ul li {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: normal;
   margin-left: 8px;
   margin-right: 8px;
