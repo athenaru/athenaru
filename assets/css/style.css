@@ -599,6 +599,7 @@ p {
 
 .btn-custom-color {
   margin-top: 20px;
+  margin-bottom: 60px;
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -616,6 +617,12 @@ p {
 }
 
 .btn-custom-color:hover {
+  color: #f7f7f7;
+  background-color: #b8a07e;
+  border-color: #b8a07e;
+}
+
+.btn-send:hover{
   color: #f7f7f7;
   background-color: #b8a07e;
   border-color: #b8a07e;
