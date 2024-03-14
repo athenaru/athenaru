@@ -41,7 +41,7 @@
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+      <a href="index.html" class="logo"><img src="assets/img/my-logo.png" alt="" class="img-fluid"></a>
       <!-- Uncomment below if you prefer to use an text logo -->
       <!-- <h1 class="logo"><a href="index.html">Folio</a></h1> -->
 
@@ -104,6 +104,19 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="buttons-container">
+                  <div class="next-btn" id="next-btn">
+                    <a href="#" id="next-link">← Next Experience</a>
+                  </div>
+                  <div class="back-to-work-btn">
+                    <a href="index.html#experience">Work Experience</a>
+                  </div>
+                  <div class="prev-btn" id="prev-btn">
+                    <a href="#" id="prev-link">Previous Experience →</a>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -153,6 +166,56 @@
                 document.getElementById('workDate').innerText = work.date;
                 document.getElementById('workDescription').innerHTML = work.description;
                 document.getElementById('workImage').src = work.image;
+            }
+
+            // Function to get the current id from the URL
+            function getCurrentId() {
+            var hash = window.location.hash;
+            if (hash) {
+                return parseInt(hash.split('=')[1]); // Extract the id value
+            }
+            return null;
+            }
+
+            // Function to determine the next-exp id
+            function getNextEXPId(currentId) {
+                if (currentId > 1) {
+                    return currentId - 1; // We want to decrement the current ID for the "Next Experience"
+                }
+                return null;
+            }
+
+            // Function to determine the previous-exp id
+            function getPreviousEXPId(currentId) {
+                if (currentId < 3) {
+                    return currentId + 1; // We want to increment the current ID for the "Previous Experience"
+                }
+                return null;
+            }
+
+            const prevLink = document.getElementById('prev-link');
+            const nextLink = document.getElementById('next-link');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            const currentId = parseInt(workId);
+
+            if (currentId !== null) {
+                const previousId = getPreviousEXPId(currentId);
+                if (previousId !== null) {
+                    prevLink.href = "blog-single.html?id=" + previousId;
+                } else {
+                    // If there's no previous id, hide the previous button
+                    prevBtn.style.display = 'none';
+                }
+
+                const nextId = getNextEXPId(currentId);
+                if (nextId !== null) {
+                    nextLink.href = "blog-single.html?id=" + nextId;
+                } else {
+                    // If there's no next id, hide the next button
+                    nextBtn.style.display = 'none';
+                }
             }
         });
       </script>
